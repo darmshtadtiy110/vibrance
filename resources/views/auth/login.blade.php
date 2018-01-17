@@ -14,13 +14,13 @@
   <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700'>
 
   <!-- Theme CSS -->
-  <link rel="stylesheet" type="text/css" href="assets/skin/default_skin/css/theme.css">
+  <link rel="stylesheet" type="text/css" href="{{ asset('assets/skin/default_skin/css/theme.css') }}">
 
   <!-- Admin Forms CSS -->
-  <link rel="stylesheet" type="text/css" href="assets/admin-tools/admin-forms/css/admin-forms.css">
+  <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin-tools/admin-forms/css/admin-forms.css') }}">
 
   <!-- Favicon -->
-  <link rel="shortcut icon" href="assets/img/favicon.ico">
+  <link rel="shortcut icon" href="{{ asset('assets/img/favicon.ico') }}">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!--[if lt IE 9]>
@@ -95,11 +95,12 @@
             -->
 
             <!-- end .form-header section -->
-            <form method="post" action="/" id="contact">
+            <form method="post" action="{{ route('login') }}" id="contact">
+                {{ csrf_field() }}
               <div class="panel-body bg-light p30">
                 <div class="row">
                   <div class="col-sm-7 pr30">
-
+                    <!--
                     <div class="section row hidden">
                       <div class="col-md-4">
                         <a href="#" class="button btn-social facebook span-left mr5 btn-block">
@@ -119,13 +120,13 @@
                             <i class="fa fa-google-plus"></i>
                           </span>Google+</a>
                       </div>
-                    </div>
+                    </div>-->
 
                     <div class="section">
-                      <label for="username" class="field-label text-muted fs18 mb10">Username</label>
-                      <label for="username" class="field prepend-icon">
-                        <input type="text" name="username" id="username" class="gui-input" placeholder="Enter username">
-                        <label for="username" class="field-icon">
+                      <label for="email" class="field-label text-muted fs18 mb10">Email</label>
+                      <label for="email" class="field prepend-icon">
+                        <input type="text" name="email" id="email" class="gui-input" value="{{ old('email') }}">
+                        <label for="email" class="field-icon">
                           <i class="fa fa-user"></i>
                         </label>
                       </label>
@@ -133,18 +134,18 @@
                     <!-- end section -->
 
                     <div class="section">
-                      <label for="username" class="field-label text-muted fs18 mb10">Password</label>
+                      <label for="email" class="field-label text-muted fs18 mb10">Password</label>
                       <label for="password" class="field prepend-icon">
-                        <input type="password" name="password" id="password" class="gui-input" placeholder="Enter password">
+                        <input type="password" name="password" id="password" class="gui-input" placeholder="Enter password" required>
                         <label for="password" class="field-icon">
                           <i class="fa fa-lock"></i>
                         </label>
                       </label>
                     </div>
                     <!-- end section -->
-
+                    <!--
                     <div class="section">
-                      <label for="username" class="field-label text-muted fs18 mb10">Retype password</label>
+                      <label for="email" class="field-label text-muted fs18 mb10">Retype password</label>
                       <label for="re-password" class="field prepend-icon">
                         <input type="password" name="re-password" id="re-password" class="gui-input" placeholder="Retype password">
                         <label for="re-password" class="field-icon">
@@ -171,7 +172,7 @@
               <div class="panel-footer clearfix p10 ph15">
                 <button type="submit" class="button btn-primary mr10 pull-right">Sign In</button>
                 <label class="switch ib switch-primary pull-left input-align mt10">
-                  <input type="checkbox" name="remember" id="remember" checked>
+                  <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                   <label for="remember" data-on="YES" data-off="NO"></label>
                   <span>Remember me</span>
                 </label>
@@ -193,16 +194,16 @@
   <!-- BEGIN: PAGE SCRIPTS -->
 
   <!-- jQuery -->
-  <script src="vendor/jquery/jquery-1.11.1.min.js"></script>
-  <script src="vendor/jquery/jquery_ui/jquery-ui.min.js"></script>
+  <script src="{{ asset('vendor/jquery/jquery-1.11.1.min.js') }}"></script>
+  <script src="{{ asset('vendor/jquery/jquery_ui/jquery-ui.min.js') }}"></script>
 
   <!-- CanvasBG Plugin(creates mousehover effect) -->
-  <script src="vendor/plugins/canvasbg/canvasbg.js"></script>
+  <script src="{{ asset('vendor/plugins/canvasbg/canvasbg.js') }}"></script>
 
   <!-- Theme Javascript -->
-  <script src="assets/js/utility/utility.js"></script>
-  <script src="assets/js/demo/demo.js"></script>
-  <script src="assets/js/main.js"></script>
+  <script src="{{ asset('assets/js/utility/utility.js') }}"></script>
+  <script src="{{ asset('assets/js/demo/demo.js') }}"></script>
+  <script src="{{ asset('assets/js/main.js') }}"></script>
 
   <!-- Page Javascript -->
   <script type="text/javascript">
@@ -214,7 +215,7 @@
     Core.init();
 
     // Init Demo JS
-    Demo.init();
+    //Demo.init();
 
     // Init CanvasBG and pass target starting location
     CanvasBG.init({
