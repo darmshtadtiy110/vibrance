@@ -4,10 +4,8 @@
 <head>
   <!-- Meta, title, CSS, favicons, etc. -->
   <meta charset="utf-8">
-  <title>AbsoluteAdmin - A Responsive Bootstrap 3 Admin Dashboard Template</title>
-  <meta name="keywords" content="HTML5 Bootstrap 3 Admin Template UI Theme" />
-  <meta name="description" content="AbsoluteAdmin - A Responsive HTML5 Admin UI Framework">
-  <meta name="author" content="AbsoluteAdmin">
+  <title>{{ config('app.name') }}{{  config('app.subtitle') }}</title>
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Font CSS (Via CDN) -->
@@ -57,9 +55,9 @@
 
             <div class="col-xs-6 text-right va-b pr5">
               <div class="login-links">
-                <a href="pages_login.html" class="active" title="Sign In">Sign In</a>
+                <a href="{{ route('login') }}" class="active" title="Sign In">Sign In</a>
                 <span class="text-white"> | </span>
-                <a href="pages_register.html" class="" title="Register">Register</a>
+                <a href="{{ route('register') }}" class="" title="Register">Register</a>
               </div>
 
             </div>
@@ -124,23 +122,29 @@
 
                     <div class="section">
                       <label for="email" class="field-label text-muted fs18 mb10">Email</label>
-                      <label for="email" class="field prepend-icon">
-                        <input type="text" name="email" id="email" class="gui-input" value="{{ old('email') }}">
+                      <label for="email" class="field prepend-icon {{ $errors->has('email') ? ' state-error' : '' }}">
+                        <input type="text" name="email" id="email" class="gui-input" value="{{ old('email') }}" placeholder="Enter email">
                         <label for="email" class="field-icon">
                           <i class="fa fa-user"></i>
                         </label>
                       </label>
+                      @if ($errors->has('email'))
+                        <em for="email" class="state-error">{{ $errors->first('email') }}</em>
+                      @endif
                     </div>
                     <!-- end section -->
 
                     <div class="section">
                       <label for="email" class="field-label text-muted fs18 mb10">Password</label>
-                      <label for="password" class="field prepend-icon">
+                      <label for="password" class="field prepend-icon {{ $errors->has('password') ? ' state-error' : '' }}">
                         <input type="password" name="password" id="password" class="gui-input" placeholder="Enter password" required>
                         <label for="password" class="field-icon">
                           <i class="fa fa-lock"></i>
                         </label>
                       </label>
+                      @if ($errors->has('password'))
+                        <em for="password" class="state-error">{{ $errors->first('password') }}</em>
+                      @endif
                     </div>
                     <!-- end section -->
                     <!--
@@ -171,6 +175,7 @@
               <!-- end .form-body section -->
               <div class="panel-footer clearfix p10 ph15">
                 <button type="submit" class="button btn-primary mr10 pull-right">Sign In</button>
+                <a href="{{ route('password.request') }}" class=" button btn-dark mr10 pull-right active" title="Sign In">Forgot Password?</a>
                 <label class="switch ib switch-primary pull-left input-align mt10">
                   <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                   <label for="remember" data-on="YES" data-off="NO"></label>
