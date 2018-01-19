@@ -220,7 +220,7 @@
     Core.init();
 
     // Init Demo JS
-    //Demo.init();
+    // Demo.init();
 
     // Init CanvasBG and pass target starting location
     CanvasBG.init({

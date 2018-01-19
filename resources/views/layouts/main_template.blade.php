@@ -1,23 +1,24 @@
-<html>
+<!DOCTYPE html>
+<html lang="{{ app()->getLocale() }}">
 <head>
   <!-- Meta, title, CSS, favicons, etc. -->
   <meta charset="utf-8">
-  <title>Vibrance Chat</title>
+  <title>{{ config('app.name') }} - {{ config('app.subtitle') }}</title>
 
   <!-- Font CSS (Via CDN) -->
   <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
 
   <!-- FullCalendar Plugin CSS -->
-  <link rel="stylesheet" type="text/css" href="vendor/plugins/fullcalendar/fullcalendar.min.css">
+  <link rel="stylesheet" type="text/css" href="{{ asset('vendor/plugins/fullcalendar/fullcalendar.min.css') }}">
 
   <!-- Theme CSS -->
-  <link rel="stylesheet" type="text/css" href="assets/skin/default_skin/css/theme.css">
+  <link rel="stylesheet" type="text/css" href="{{ asset('assets/skin/default_skin/css/theme.css') }}">
 
   <!-- Admin Forms CSS -->
-  <link rel="stylesheet" type="text/css" href="assets/admin-tools/admin-forms/css/admin-forms.min.css">
+  <link rel="stylesheet" type="text/css" href="a{{ asset('ssets/admin-tools/admin-forms/css/admin-forms.min.css') }}">
 
   <!-- Favicon -->
-  <link rel="shortcut icon" href="assets/img/favicon.ico">
+  <link rel="shortcut icon" href="{{ asset('assets/img/favicon.ico') }}">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!--[if lt IE 9]>
@@ -28,6 +29,7 @@
 </head>
 
 <body class="dashboard-page sb-l-o sb-r-c onload-check" style="min-height: 427px;">
+
 
 <!-------------------------------------------------------------+ 
   <body> Helper Classes: 
@@ -227,11 +229,11 @@
         <li class="dropdown menu-merge">
           <a href="#" class="dropdown-toggle fw600 p15" data-toggle="dropdown">
             <img src="assets/img/avatars/1.jpg" alt="avatar" class="mw30 br64">
-            <span class="hidden-xs pl15"> Michael .R </span>
+            <span class="hidden-xs pl15">{{ Auth::user()->name }}</span>
             <span class="caret caret-tp hidden-xs"></span>
           </a>
           <ul class="dropdown-menu list-group dropdown-persist w250" role="menu">
-            <li class="dropdown-header clearfix">
+           <!--<li class="dropdown-header clearfix">
               <div class="pull-left ml10">
                 <select id="user-status" style="display: none;">
                   <optgroup label="Current Status:">
@@ -251,7 +253,7 @@
                   </optgroup>
                 </select><div class="btn-group" style="width: 100px;"><button type="button" class="multiselect dropdown-toggle btn btn-default btn-sm" data-toggle="dropdown" title="Admin" style="width: 100px;">Admin <b class="caret"></b></button><ul class="multiselect-container dropdown-menu pull-right"><li class="multiselect-item multiselect-group"><label>Logged in As:</label></li><li><a href="javascript:void(0);"><label class="radio"><input type="radio" value="1-1"> Client</label></a></li><li><a href="javascript:void(0);"><label class="radio"><input type="radio" value="1-2"> Editor</label></a></li><li class="active"><a href="javascript:void(0);"><label class="radio"><input type="radio" value="1-3"> Admin</label></a></li></ul></div>
               </div>
-            </li>
+            </li>-->
             <li class="list-group-item">
               <a href="#" class="animated animated-short fadeInUp">
                 <span class="fa fa-envelope"></span> Messages
@@ -273,7 +275,8 @@
                 <span class="fa fa-gear"></span> Settings </a>
             </li>
             <li class="dropdown-footer">
-              <a href="#" class="">
+              <a href="{{ route('logout') }}" class=""
+              onclick="event.preventDefault();                                                     document.getElementById('logout-form').submit();">
               <span class="fa fa-power-off pr5"></span> Logout </a>
             </li>
           </ul>
@@ -314,9 +317,11 @@
               </a>
               <div class="media-body">
                 <div class="media-links">
-                   <a href="#" class="sidebar-menu-toggle">User Menu -</a> <a href="pages_login(alt).html">Logout</a>
+                   <a href="#" class="sidebar-menu-toggle">User Menu -</a> 
+                   <a href="{{ route('logout') }}" 
+                   onclick="event.preventDefault();                                                 document.getElementById('logout-form').submit();">Logout</a>
                 </div>
-                <div class="media-author">Michael Richards</div>
+                <div class="media-author">{{ Auth::user()->name }}</div>
               </div>
             </div>
           </div>
@@ -1149,7 +1154,7 @@
         <div class="tray tray-center" style="height: 613px;">      
 
           
-          
+          @yield('content')
 
           
 
@@ -1403,43 +1408,47 @@
     <div class="nano-pane" style="display: block;"><div class="nano-slider" style="height: 221px; transform: translate(0px, 0px);"></div></div></aside>
     <!-- End: Right Sidebar -->
 
+  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+    {{ csrf_field() }}
+  </form>
+  
   </div>
   <!-- End: Main -->
 
   <!-- BEGIN: PAGE SCRIPTS -->
 
   <!-- jQuery -->
-  <script src="vendor/jquery/jquery-1.11.1.min.js"></script>
-  <script src="vendor/jquery/jquery_ui/jquery-ui.min.js"></script>
+  <script src="{{ asset('vendor/jquery/jquery-1.11.1.min.js' )}}"></script>
+  <script src="{{ asset('vendor/jquery/jquery_ui/jquery-ui.min.js') }}"></script>
 
   <!-- HighCharts Plugin -->
-  <script src="vendor/plugins/highcharts/highcharts.js"></script>
+  <script src="{{ asset('vendor/plugins/highcharts/highcharts.js') }}"></script>
 
   <!-- JvectorMap Plugin + US Map (more maps in plugin/assets folder) -->
-  <script src="vendor/plugins/jvectormap/jquery.jvectormap.min.js"></script>
-  <script src="vendor/plugins/jvectormap/assets/jquery-jvectormap-us-lcc-en.js"></script> 
+  <script src="{{ asset('vendor/plugins/jvectormap/jquery.jvectormap.min.js') }}"></script>
+  <script src="{{ asset('vendor/plugins/jvectormap/assets/jquery-jvectormap-us-lcc-en.js') }}"></script> 
 
   <!-- Bootstrap Tabdrop Plugin -->
-  <script src="vendor/plugins/tabdrop/bootstrap-tabdrop.js"></script>
+  <script src="{{ asset('vendor/plugins/tabdrop/bootstrap-tabdrop.js') }}"></script>
 
   <!-- FullCalendar Plugin + moment Dependency -->
-  <script src="vendor/plugins/fullcalendar/lib/moment.min.js"></script>
-  <script src="vendor/plugins/fullcalendar/fullcalendar.min.js"></script>
+  <script src="{{ asset('vendor/plugins/fullcalendar/lib/moment.min.js') }}"></script>
+  <script src="{{ asset('vendor/plugins/fullcalendar/fullcalendar.min.js') }}"></script>
 
   <!-- Theme Javascript -->
-  <script src="assets/js/utility/utility.js"></script>
-  <script src="assets/js/demo/demo.js"></script>
-  <script src="assets/js/main.js"></script>
+  <script src="{{ asset('assets/js/utility/utility.js') }}"></script>
+  <script src="{{ asset('assets/js/demo/demo.js') }}"></script>
+  <script src="{{ asset('assets/js/main.js') }}"></script>
 
   <!-- Widget Javascript -->
-  <script src="assets/js/demo/widgets.js"></script>
+  <script src="{{ asset('assets/js/demo/widgets.js') }}"></script>
   <script type="text/javascript">
   jQuery(document).ready(function() {
 
     "use strict";
 
     // Init Demo JS  
-    Demo.init();
+    // Demo.init();
  
 
     // Init Theme Core    
