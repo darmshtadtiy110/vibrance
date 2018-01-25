@@ -14,3 +14,7 @@
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('/');
+
+Route::get('add-chat', function() {
+	return view('home');
+});

@@ -377,13 +377,21 @@
 
         <!-- Start: Sidebar Menu -->
         <ul class="nav sidebar-menu">
-          <li class="sidebar-label pt20">Чаты</li>
           <li>
-            <a href="pages_calendar.html">
+            <a href="{{ url('add-chat') }}">
               <span class="fa fa-plus"></span>
               <span class="sidebar-title">Добавить чат...</span>
             </a>
           </li>
+          <li>
+            <a href="{{ url('add-contact') }}">
+              <span class="fa fa-plus"></span>
+              <span class="sidebar-title">Добавить контакты...</span>
+            </a>
+          </li>
+          <li class="sidebar-label pt20">Чаты</li>
+          <li class="sidebar-label pt20">Контакты</li>
+          <li class="sidebar-label pt20">Эфир</li>
         </ul>
         <!-- End: Sidebar Menu -->
 
@@ -457,157 +465,13 @@
         <!-- begin: .tray-center -->
         <div class="tray tray-center" style="height: 613px;">      
 
-          
-          @yield('content')
-
-          
-
-          
-          
+          @yield('content')        
 
         </div>
         <!-- end: .tray-center -->
 
         <!-- begin: .tray-right -->
         <aside class="tray tray-right tray270 pn hidden" data-tray-height="match" style="height: 538px;">
-
-          <!-- store activity timeline -->
-          <ol class="timeline-list pl5 mt5">
-            <li class="timeline-item">
-              <div class="timeline-icon bg-dark light">
-                <span class="fa fa-tags"></span>
-              </div>
-              <div class="timeline-desc">
-                <b>Michael</b> Added a new item to his store:
-                <a href="#">Ipod</a>
-              </div>
-              <div class="timeline-date">1:25am</div>
-            </li>
-            <li class="timeline-item">
-              <div class="timeline-icon bg-dark light">
-                <span class="fa fa-tags"></span>
-              </div>
-              <div class="timeline-desc">
-                <b>Sara</b> Added a new item to his store:
-                <a href="#">Notebook</a>
-              </div>
-              <div class="timeline-date">3:05am</div>
-            </li>
-            <li class="timeline-item">
-              <div class="timeline-icon bg-success">
-                <span class="fa fa-usd"></span>
-              </div>
-              <div class="timeline-desc">
-                <b>Admin</b> created a new invoice for:
-                <a href="#">Software</a>
-              </div>
-              <div class="timeline-date">4:15am</div>
-            </li>
-            <li class="timeline-item">
-              <div class="timeline-icon bg-warning">
-                <span class="fa fa-pencil"></span>
-              </div>
-              <div class="timeline-desc">
-                <b>Laura</b> edited her work experience</div>
-              <div class="timeline-date">5:25am</div>
-            </li>
-            <li class="timeline-item">
-              <div class="timeline-icon bg-success">
-                <span class="fa fa-usd"></span>
-              </div>
-              <div class="timeline-desc">
-                <b>Admin</b> created a new invoice for:
-                <a href="#">Apple Inc.</a>
-              </div>
-              <div class="timeline-date">7:45am</div>
-            </li>
-            <li class="timeline-item">
-              <div class="timeline-icon bg-dark light">
-                <span class="fa fa-tags"></span>
-              </div>
-              <div class="timeline-desc">
-                <b>Michael</b> Added a new item to his store:
-                <a href="#">Ipod</a>
-              </div>
-              <div class="timeline-date">8:25am</div>
-            </li>
-            <li class="timeline-item">
-              <div class="timeline-icon bg-dark light">
-                <span class="fa fa-tags"></span>
-              </div>
-              <div class="timeline-desc">
-                <b>Sara</b> Added a new item to his store:
-                <a href="#">Watch</a>
-              </div>
-              <div class="timeline-date">9:35am</div>
-            </li>
-            <li class="timeline-item">
-              <div class="timeline-icon bg-system">
-                <span class="fa fa-fire"></span>
-              </div>
-              <div class="timeline-desc">
-                <b>Admin</b> created a new invoice for:
-                <a href="#">Software</a>
-              </div>
-              <div class="timeline-date">4:15am</div>
-            </li>
-            <li class="timeline-item">
-              <div class="timeline-icon bg-warning">
-                <span class="fa fa-pencil"></span>
-              </div>
-              <div class="timeline-desc">
-                <b>Laura</b> edited her work experience</div>
-              <div class="timeline-date">5:25am</div>
-            </li>
-            <li class="timeline-item">
-              <div class="timeline-icon bg-success">
-                <span class="fa fa-usd"></span>
-              </div>
-              <div class="timeline-desc">
-                <b>Admin</b> created a new invoice for:
-                <a href="#">Software</a>
-              </div>
-              <div class="timeline-date">4:15am</div>
-            </li>
-            <li class="timeline-item">
-              <div class="timeline-icon bg-warning">
-                <span class="fa fa-pencil"></span>
-              </div>
-              <div class="timeline-desc">
-                <b>Laura</b> edited her work experience</div>
-              <div class="timeline-date">5:25am</div>
-            </li>
-            <li class="timeline-item">
-              <div class="timeline-icon bg-success">
-                <span class="fa fa-usd"></span>
-              </div>
-              <div class="timeline-desc">
-                <b>Admin</b> created a new invoice for:
-                <a href="#">Apple Inc.</a>
-              </div>
-              <div class="timeline-date">7:45am</div>
-            </li>
-            <li class="timeline-item">
-              <div class="timeline-icon bg-dark light">
-                <span class="fa fa-tags"></span>
-              </div>
-              <div class="timeline-desc">
-                <b>Michael</b> Added a new item to his store:
-                <a href="#">Ipod</a>
-              </div>
-              <div class="timeline-date">8:25am</div>
-            </li>
-            <li class="timeline-item">
-              <div class="timeline-icon bg-dark light">
-                <span class="fa fa-tags"></span>
-              </div>
-              <div class="timeline-desc">
-                <b>Sara</b> Added a new item to his store:
-                <a href="#">Watch</a>
-              </div>
-              <div class="timeline-date">9:35am</div>
-            </li>
-          </ol>
 
         </aside>
         <!-- end: .tray-right -->
@@ -627,89 +491,8 @@
 
       <!-- Start: Sidebar Right Content -->
       <div class="sidebar-right-content nano-content" tabindex="0" style="margin-right: -15px;">
-
-        <div class="tab-block sidebar-block br-n">
-          <ul class="nav nav-tabs tabs-border nav-justified hidden">
-            <li class="active">
-              <a href="#sidebar-right-tab1" data-toggle="tab">Tab 1</a>
-            </li>
-            <li>
-              <a href="#sidebar-right-tab2" data-toggle="tab">Tab 2</a>
-            </li>
-            <li>
-              <a href="#sidebar-right-tab3" data-toggle="tab">Tab 3</a>
-            </li>
-          </ul>
-          <div class="tab-content br-n">
-            <div id="sidebar-right-tab1" class="tab-pane active">
-
-              <h5 class="title-divider text-muted mb20"> Server Statistics
-                <span class="pull-right"> 2013
-                  <i class="fa fa-caret-down ml5"></i>
-                </span>
-              </h5>
-              <div class="progress mh5">
-                <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 44%">
-                  <span class="fs11">DB Request</span>
-                </div>
-              </div>
-              <div class="progress mh5">
-                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 84%">
-                  <span class="fs11 text-left">Server Load</span>
-                </div>
-              </div>
-              <div class="progress mh5">
-                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 61%">
-                  <span class="fs11 text-left">Server Connections</span>
-                </div>
-              </div>
-
-              <h5 class="title-divider text-muted mt30 mb10">Traffic Margins</h5>
-              <div class="row">
-                <div class="col-xs-5">
-                  <h3 class="text-primary mn pl5">132</h3>
-                </div>
-                <div class="col-xs-7 text-right">
-                  <h3 class="text-success-dark mn">
-                    <i class="fa fa-caret-up"></i> 13.2% </h3>
-                </div>
-              </div>
-
-              <h5 class="title-divider text-muted mt25 mb10">Database Request</h5>
-              <div class="row">
-                <div class="col-xs-5">
-                  <h3 class="text-primary mn pl5">212</h3>
-                </div>
-                <div class="col-xs-7 text-right">
-                  <h3 class="text-success-dark mn">
-                    <i class="fa fa-caret-up"></i> 25.6% </h3>
-                </div>
-              </div>
-
-              <h5 class="title-divider text-muted mt25 mb10">Server Response</h5>
-              <div class="row">
-                <div class="col-xs-5">
-                  <h3 class="text-primary mn pl5">82.5</h3>
-                </div>
-                <div class="col-xs-7 text-right">
-                  <h3 class="text-danger mn">
-                    <i class="fa fa-caret-down"></i> 17.9% </h3>
-                </div>
-              </div>
-
-              <h5 class="title-divider text-muted mt40 mb20"> Server Statistics
-                <span class="pull-right text-primary fw600">USA</span>
-              </h5>
-
-
-            </div>
-            <div id="sidebar-right-tab2" class="tab-pane"></div>
-            <div id="sidebar-right-tab3" class="tab-pane"></div>
-          </div>
-          <!-- end: .tab-content -->
-        </div>
-      </div>
-    <div class="nano-pane" style="display: block;"><div class="nano-slider" style="height: 221px; transform: translate(0px, 0px);"></div></div></aside>
+    <div class="nano-pane" style="display: block;"><div class="nano-slider" style="height: 221px; transform: translate(0px, 0px);"></div></div>
+  </aside>
     <!-- End: Right Sidebar -->
 
   <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
