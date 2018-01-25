@@ -15,6 +15,7 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('/');
 
-Route::get('add-chat', function() {
-	return view('home');
-});
+Route::get('add-contact', 'AddContactController@index')->name('/');
+
+Route::get('add-chat', 'AddCharController@index')->name('/');
+
