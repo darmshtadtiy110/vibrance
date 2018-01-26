@@ -17,5 +17,5 @@ Route::get('/', 'HomeController@index')->name('/');
 
 Route::get('add-contact', 'AddContactController@index')->name('/');
 
-Route::get('add-chat', 'AddCharController@index')->name('/');
+//Route::get('add-chat', 'AddChatController@index')->name('/');
 

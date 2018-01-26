@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
-
+use Auth;
 class AddContactController extends Controller
 {
     /**
@@ -24,7 +24,10 @@ class AddContactController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $all_users = User::all();
+        $users = $all_users->filter(function($value, $key) {
+            return $value->email != Auth::User()->email;
+        });
         return view('users', ['users' => $users]);
     }
 }
