@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Relation;
 use Auth;
+
 class AddContactController extends Controller
 {
     /**
@@ -29,5 +31,12 @@ class AddContactController extends Controller
             return $value->email != Auth::User()->email;
         });
         return view('users', ['users' => $users]);
+    }
+
+    public function AddContact($contact_id) {
+        return Relation::create([
+            'user_id' => Auth::User()->id,
+            'contact_id' => $contact_id
+        ]);
     }
 }
