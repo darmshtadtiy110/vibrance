@@ -15,7 +15,9 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('/');
 
-Route::get('add-contact', 'AddContactController@index')->name('/');
+Route::get('/user-list', 'AddContactController@index');
 
-//Route::get('add-chat', 'AddChatController@index')->name('/');
+Route::post('/user-list', 'AddContactController@AddContact');
+
+//Route::get('chat-list', 'AddChatController@index')->name('/');
 

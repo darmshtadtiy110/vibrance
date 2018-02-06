@@ -33,10 +33,16 @@ class AddContactController extends Controller
         return view('users', ['users' => $users]);
     }
 
-    public function AddContact($contact_id) {
+    /**
+     * Add contact for user.
+     *
+     * @return \App\Relation
+     */
+
+    public function AddContact(Request $request) {
         return Relation::create([
             'user_id' => Auth::User()->id,
-            'contact_id' => $contact_id
-        ]);
+            'contact_id' => $request->id
+        ]);                                                                      
     }
 }
